@@ -1,78 +1,8 @@
-from abc import ABC, abstractmethod
-import json
 
-
-class Display:
-
-    def showByName(self, b):
-        with open('data.json') as f:
-            data = json.load(f)
-            for university in data:
-                if b == university["name"]:
-                    programmes = university["programmes"]
-                    print(f'''
-        Name: {university["name"]}
-        Country: {university["country"]}
-        City: {university["city"]}
-        Programmes:                    ''')
-                    for ps in programmes:
-                        print("     - " + ps)
-
-    def showByCountry(self, b):
-        with open('data.json') as f:
-            data = json.load(f)
-            for countries in data:
-                if b == countries["country"]:
-                    print(countries["name"])
-
-    def showByCourse(self, b):
-        with open('data.json') as f:
-            data = json.load(f)
-            print("Essas universidades oferecem o curso de " + b + ":")
-            for elements in data:
-                length = len(elements["programmes"])
-                for j in range(0, length):
-                    if elements["programmes"][j] == b:
-                        print("  -" + elements["name"])
-
-
-
-
-class IStrategy(ABC):
-
-    @abstractmethod
-    def searchFor(self, a, b):
-        pass
-
-
-class CSSearchByUni(IStrategy):
-    def searchFor(self, a, b):
-        display = Display()
-        display.showByName(b)
-
-
-class CSSearchByCourse(IStrategy):
-    def searchFor(self, a, b):
-        display = Display()
-        display.showByCourse(b)
-
-
-class CSSearchByCountry(IStrategy):
-    def searchFor(self, a, b):
-        display = Display()
-        display.showByCountry(b)
-
-
-class CtxControl:
-    def __init__(self):
-        self.__strategy__ = None
-
-    def setStrategy(self, strtgy):
-        self.__strategy__ = strtgy
-
-    def search(self, a, b):
-        self.__strategy__.searchFor(a, b)
-
+from control.CtxControl import CtxControl
+from search.concreteClasses.CSSearchByCountry import CSSearchByCountry
+from search.concreteClasses.CSSearchByCourse import CSSearchByCourse
+from search.concreteClasses.CSSearchByUni import CSSearchByUni
 
 control = CtxControl()
 while True:
