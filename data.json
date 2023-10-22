@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Heidelberg",
+    "country": "Germany",
+    "city": "Heidelberg",
+    "programmes": [
+      "Biomedical Engineering"
+    ],
+    "documents": {
+      "english": {
+        "Toefl": "92/120",
+        "Cambridge": "17/20"
+      },
+      "general": "something"
+    }
+  },
+  {
+    "name": "Twente",
+    "country": "Netherlands",
+    "city": "Twente",
+    "programmes": [
+      "Biomedical Engineering",
+      "Nanoscience"
+    ],
+    "documents": {
+      "english": {
+        "Toefl": "92/120",
+        "Cambridge": "17/20"
+      },
+      "general": "something"
+    }}
+]
